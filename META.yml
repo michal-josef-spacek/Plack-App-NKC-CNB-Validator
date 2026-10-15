@@ -1,0 +1,29 @@
+---
+abstract: XXX
+author:
+  - 'Michal Josef Spacek <michal.josef.spacek@gmail.com>'
+build_requires:
+  ExtUtils::MakeMaker: 6.36
+  Test::More: 0
+  Test::NoWarnings: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.36
+distribution_type: module
+dynamic_config: 1
+generated_by: 'Module::Install version 1.21'
+license: bsd
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Plack-App-NKC-CNB-Validator
+no_index:
+  directory:
+    - inc
+    - t
+    - xt
+resources:
+  bugtracker: https://github.com/michal-josef-spacek/Plack-App-NKC-CNB-Validator/issues
+  homepage: https://github.com/michal-josef-spacek/Plack-App-NKC-CNB-Validator
+  license: http://opensource.org/licenses/bsd-license.php
+  repository: git://github.com/michal-josef-spacek/Plack-App-NKC-CNB-Validator
+version: '0.01'
