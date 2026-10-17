@@ -1,9 +1,10 @@
 TODO
 ====
-1. Utils::detect_search() is common code
-   From Plack::App::NKC::MARC::Utils or App::NKC2MARC
-   NKC::Id::Utils ?
 2.
 
 Applied
 =======
+1. Utils::detect_search() is common code
+   From Plack::App::NKC::MARC::Utils or App::NKC2MARC
+   NKC::Id::Utils ?
+OK [20261017] skim
