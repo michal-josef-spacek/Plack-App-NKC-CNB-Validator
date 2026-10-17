@@ -4,11 +4,15 @@ use base qw(Plack::Component::Tags::HTML);
 use strict;
 use warnings;
 
+use Data::MARC::Validator::Report;
+use Data::Printer;
+use DateTime;
 use English;
 use Error::Pure qw(err);
 use List::Util 1.33 qw(none);
 use MARC::File::XML;
 use MARC::Record;
+use MARC::Validator;
 use NKC::Id::Utils qw(check_cnb_id);
 use Plack::App::NKC::CNB::Validator::Utils qw(add_message);
 use Plack::Request;
@@ -115,7 +119,8 @@ sub _load_data {
 		$rs = $self->{'_zoom'}->search_pqf('@attr 1=8 '.$self->{'_search_id'}->{'issn'});
 		$self->{'_searching'} = decode_utf8('ISSN '.$self->{'_search_id'}->{'issn'});
 	} elsif (exists $self->{'_search_id'}->{'system_id'}) {
-		# TODO Support for system number
+		$rs = $self->{'_zoom'}->search_pqf('@attr 1=1032 '.$self->{'_search_id'}->{'system_id'});
+		$self->{'_searching'} = decode_utf8('System id '.$self->{'_search_id'}->{'system_id'});
 	} else {
 		add_message(
 			$self,
@@ -125,9 +130,6 @@ sub _load_data {
 		);
 		return;
 	}
-
-	# Cache.
-	# TODO
 
 	# Load data.
 	if (defined $rs && $rs->size > 0) {
@@ -195,18 +197,32 @@ sub _process_actions {
 
 	$self->{'_title'} = $self->_lang('page_title');
 
+	$self->{'_searching'} = undef;
+	$self->{'_marc'} = undef;
+
 	$self->_process_form($env);
 	$self->_load_data($env);
 
-	# Clean CSS and Javascript in header. Because switching of systems.
-	$self->css_src([]);
-	$self->script_js([]);
-	$self->script_js_src([]);
-
+	# Validate.
 	if (defined $self->{'_marc'}) {
-		my $input = $self->{'_marc'}->as_xml;
+		my @plugin_reports;
+		foreach my $plugin (MARC::Validator::plugins) {
+			my $plugin_obj = $plugin->new(
+				'record_id_def' => '015a',
+			);
+			$plugin_obj->init;
+			$plugin_obj->process($self->{'_marc'});
+			$plugin_obj->postprocess;
 
-		# TODO
+			# Plugin report.
+			push @plugin_reports, $plugin_obj->report;
+		}
+
+		# Report object.
+		$self->{'_validation_report'} = Data::MARC::Validator::Report->new(
+			'datetime' => DateTime->now,
+			'plugins' => \@plugin_reports,
+		);
 	}
 
 	$self->{'_tags_footer'}->init($self->footer);
@@ -218,10 +234,6 @@ sub _process_form {
 	my ($self, $env) = @_;
 
 	my $req = Plack::Request->new($env);
-
-	$self->{'_search_id'} = {};
-	$self->{'_marc'} = undef;
-	$self->{'_searching'} = undef;
 
 	# Check form processing.
 	if (! $req->parameters->{'search'}) {
@@ -278,6 +290,13 @@ sub _tags_middle {
 		['a', 'id', 'main'],
 	);
 	# TODO
+	my $dump;
+	p $self->{'_validation_report'}, 'output' => \$dump;
+	$self->{'tags'}->put(
+		['b', 'pre'],
+		['d', $dump],
+		['e', 'pre'],
+	);
 	$self->{'tags'}->put(
 		['e', 'div'],
 	);
