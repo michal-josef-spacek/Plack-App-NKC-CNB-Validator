@@ -21,6 +21,9 @@ no_index:
     - inc
     - t
     - xt
+requires:
+  Class::Utils: 0
+  NKC::Id::Utils: 0
 resources:
   bugtracker: https://github.com/michal-josef-spacek/Plack-App-NKC-CNB-Validator/issues
   homepage: https://github.com/michal-josef-spacek/Plack-App-NKC-CNB-Validator
