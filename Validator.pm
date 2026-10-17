@@ -68,7 +68,7 @@ sub prepare_app {
 		'image_height' => '10em',
 		'image_link' => $self->images->{'logo'},
 		'image_radius' => '15px',
-		'search_placeholder' => decode_utf8('ČČNB, ISBN, ISSN or system number'),
+		'search_placeholder' => decode_utf8('ČČNB, ISBN, ISSN, sys. id'),
 		'search_url' => '/output',
 	)->to_app;
 	my $app_output = Plack::App::NKC::CNB::Validator::Output->new(
