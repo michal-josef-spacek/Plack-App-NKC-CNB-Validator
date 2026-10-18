@@ -21,8 +21,8 @@ use Plack::Util::Accessor qw(footer lang version zoom);
 use Scalar::Util qw(blessed);
 use Tags::HTML::Container;
 use Tags::HTML::Footer 0.03;
-use Tags::HTML::Messages;
 use Tags::HTML::MARC::Validator::Report;
+use Tags::HTML::Messages;
 use Unicode::UTF8 qw(decode_utf8);
 use ZOOM;
 
