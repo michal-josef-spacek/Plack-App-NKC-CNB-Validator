@@ -1,6 +1,5 @@
 TODO
 ====
-2. Implement output of validatation data object.
 3. Doc.
 4. Tests.
 5.
@@ -11,3 +10,6 @@ Applied
    From Plack::App::NKC::MARC::Utils or App::NKC2MARC
    NKC::Id::Utils ?
 OK [20261017] skim
+
+2. Implement output of validatation data object.
+OK [20261018] skim
