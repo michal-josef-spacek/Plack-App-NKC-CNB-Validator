@@ -5,7 +5,7 @@ use warnings;
 use inc::Module::Install;
 
 # Definition.
-abstract 'XXX';
+abstract 'Plack application for NKC Czech National Bibliography validation.';
 author 'Michal Josef Spacek <michal.josef.spacek@gmail.com>';
 author_requires 'File::Object' => 0.05;
 author_requires 'Test::More' => 0;

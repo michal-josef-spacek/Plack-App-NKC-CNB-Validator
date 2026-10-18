@@ -1,5 +1,5 @@
 ---
-abstract: XXX
+abstract: 'Plack application for NKC Czech National Bibliography validation.'
 author:
   - 'Michal Josef Spacek <michal.josef.spacek@gmail.com>'
 build_requires:
