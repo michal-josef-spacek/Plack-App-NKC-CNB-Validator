@@ -47,6 +47,7 @@ requires:
   Scalar::Util: 0
   Tags::HTML::Container: 0
   Tags::HTML::Footer: 0.03
+  Tags::HTML::MARC::Validator::Report: 0
   Tags::HTML::Messages: 0
   Unicode::UTF8: 0
   ZOOM: 0

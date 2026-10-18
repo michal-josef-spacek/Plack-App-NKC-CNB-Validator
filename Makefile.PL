@@ -41,6 +41,7 @@ requires 'Scalar::Util' => 0;
 requires 'Tags::HTML::Container' => 0;
 requires 'Tags::HTML::Footer' => 0.03;
 requires 'Tags::HTML::Messages' => 0;
+requires 'Tags::HTML::MARC::Validator::Report' => 0;
 requires 'Readonly' => 0;
 requires 'Unicode::UTF8' => 0;
 requires 'ZOOM' => 0;

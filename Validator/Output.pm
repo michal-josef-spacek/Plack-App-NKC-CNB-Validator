@@ -22,6 +22,7 @@ use Scalar::Util qw(blessed);
 use Tags::HTML::Container;
 use Tags::HTML::Footer 0.03;
 use Tags::HTML::Messages;
+use Tags::HTML::MARC::Validator::Report;
 use Unicode::UTF8 qw(decode_utf8);
 use ZOOM;
 
@@ -33,6 +34,7 @@ sub _cleanup {
 	$self->{'_tags_container'}->cleanup;
 	$self->{'_tags_footer'}->cleanup;
 	$self->{'_tags_messages'}->cleanup;
+	$self->{'_tags_validator_report'}->cleanup;
 
 	return;
 }
@@ -46,6 +48,7 @@ sub _css {
 		'error' => 'red',
 		'info' => 'green',
 	});
+	$self->{'_tags_validator_report'}->process_css;
 
 	$self->{'css'}->put(
 		['s', '#input'],
@@ -176,6 +179,7 @@ sub _prepare_app {
 	$self->{'_tags_messages'} = Tags::HTML::Messages->new(%p,
 		'flag_no_messages' => 0,
 	);
+	$self->{'_tags_validator_report'} = Tags::HTML::MARC::Validator::Report->new(%p);
 
 	$self->{'_zoom_data'} = $self->zoom;
 	if (! defined $self->{'_zoom_data'}
@@ -219,10 +223,12 @@ sub _process_actions {
 		}
 
 		# Report object.
-		$self->{'_validation_report'} = Data::MARC::Validator::Report->new(
+		my $validation_report = Data::MARC::Validator::Report->new(
 			'datetime' => DateTime->now,
 			'plugins' => \@plugin_reports,
 		);
+
+		$self->{'_tags_validator_report'}->init($validation_report);
 	}
 
 	$self->{'_tags_footer'}->init($self->footer);
@@ -289,14 +295,7 @@ sub _tags_middle {
 		['b', 'div'],
 		['a', 'id', 'main'],
 	);
-	# TODO
-	my $dump;
-	p $self->{'_validation_report'}, 'output' => \$dump;
-	$self->{'tags'}->put(
-		['b', 'pre'],
-		['d', $dump],
-		['e', 'pre'],
-	);
+	$self->{'_tags_validator_report'}->process;
 	$self->{'tags'}->put(
 		['e', 'div'],
 	);
