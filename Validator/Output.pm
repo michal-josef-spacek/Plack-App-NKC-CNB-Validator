@@ -27,7 +27,7 @@ use Tags::HTML::NKC::MARC::Menu;
 use Unicode::UTF8 qw(decode_utf8);
 use ZOOM;
 
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 sub _cleanup {
 	my ($self, $env) = @_;
