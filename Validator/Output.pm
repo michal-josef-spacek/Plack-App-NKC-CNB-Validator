@@ -6,7 +6,6 @@ use warnings;
 
 use Data::MARC::Validator::Report;
 use Data::NKC::MARC::Menu;
-use Data::Printer;
 use DateTime;
 use English;
 use Error::Pure qw(err);
