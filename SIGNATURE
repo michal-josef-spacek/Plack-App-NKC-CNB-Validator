@@ -1,0 +1,62 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.88.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: RIPEMD160
+
+SHA256 ee1b5c39b6a73f65bd392dbe1988540db820a64038750a0feddc99e24176a126 Changes
+SHA256 c06cc45fc6d57010cf924da08668c0e571d7ab3f3c56a01470b1a60c5167de49 LICENSE
+SHA256 7f48af89f8492984b9c32d448292867042f3edf5162d00ea78d032a006f0a743 MANIFEST
+SHA256 dd8e40aaca09375e974b148a5a69e6aad33bc497ee7b27f46843a15cbb93d83b META.yml
+SHA256 0c69149115f48f1c7b8f48e1e57582ae98cc634655cc6c059f7fbdf66197ba7e Makefile.PL
+SHA256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 README
+SHA256 3bfef2c3b99e83f64de494fabc1cac50faac124f70d0f89b09e8b96c05f6b4d9 Validator.pm
+SHA256 d11c1649f24ebd3ac796b2c6d6a262e80729e459564d9afdc39b90c5ee1bbccd Validator/Output.pm
+SHA256 911c4f08a60446314503749811c002f4b8558ddcef5f38e73f4a354592ca058b Validator/Utils.pm
+SHA256 cd5397bbe618f5bbd4e12a33b0cf5d21114e771c2dbd0ce28e2135beb52c35a8 inc/Module/Install.pm
+SHA256 8bd506c33fb78f10f6451413e931ca23541fcc4eebe05fcb7c7c9577341223c4 inc/Module/Install/AuthorRequires.pm
+SHA256 1b5430a46a35142ef8914d8c745196fca825defc9dfa7e389299bf294613825e inc/Module/Install/AuthorTests.pm
+SHA256 798836f9ccb8d204b1be31fc3835631f57e9d818b21a8f0d14bfcfb82ff4a72a inc/Module/Install/Base.pm
+SHA256 d64cd4c16f83c5baf11f64a44bea3a0abc060a49da5aba040f0eb01394bf75ab inc/Module/Install/Can.pm
+SHA256 65d7a6098bf3f829e8c1c2865476d3537aa6f0ad0ffc9149e10812c856529043 inc/Module/Install/Fetch.pm
+SHA256 70c4b77acab3ff51dfb318110369607cb109e1c319459249623b787cf3859750 inc/Module/Install/Makefile.pm
+SHA256 14556386168007ce913e669fc08a332ccdb6140246fd55a90c879b5190c1b57a inc/Module/Install/Metadata.pm
+SHA256 53825bc78e4c910b888160bc148c8bc211be58e02b99c8edcbf4854f95faa049 inc/Module/Install/ReadmeFromPod.pm
+SHA256 4c746c02c5cc19bed4c352e76205b4adff4c45ce8310d71294e1b83c059659c2 inc/Module/Install/Win32.pm
+SHA256 d3d9b4583243c470ae895defa4c44564485b53693cba1c50ab0320768f443e97 inc/Module/Install/WriteAll.pm
+SHA256 9e6ceeec775928994a566158f4a73e2e5626ded55ed204c8577304fb8e69e827 t/Plack-App-NKC-CNB-Validator-Output/01-use.t
+SHA256 d33f09757f38162d77d078d8bda9def22bf859adfb282302a1d2a97c8c9c857b t/Plack-App-NKC-CNB-Validator-Output/02-version.t
+SHA256 3dd29ba5cfd31a361037b3b952624d503d5efdd4c29fb4d8b9fd72caa47c976f t/Plack-App-NKC-CNB-Validator-Utils/01-use.t
+SHA256 37c970e7447b9726d1b79447ef2949ef99bc8fd00e16ba0c20f8661f8f7590dd t/Plack-App-NKC-CNB-Validator-Utils/02-version.t
+SHA256 3af0488b7c281f29fe695ff9f6b72ef6dcd8de783b67d062652509c93e254de5 t/Plack-App-NKC-CNB-Validator/01-use.t
+SHA256 f004a14218e25dec443ba66604f0ab97dabc254a0177b33483088e04b52b8375 t/Plack-App-NKC-CNB-Validator/02-version.t
+SHA256 0d5ad3b659dfdeacba2d8ae9aaf12ceea7bc70c93e55ea56c7e2745a74b52d3f xt/Plack-App-NKC-CNB-Validator-Output/01-pod_coverage.t
+SHA256 2eed242c70276f7696270f5aad50229b5c458617791be6e47de9284ecd5b86db xt/Plack-App-NKC-CNB-Validator-Output/02-pod.t
+SHA256 037ba32791bf888f58753e3d7575fb805169da493088ab17fa9203d37bfc0f74 xt/Plack-App-NKC-CNB-Validator-Utils/01-pod_coverage.t
+SHA256 b7560d8f2348c4f6b78a0ea4689d58c5b8d867d305243b0888a861cd45a469fe xt/Plack-App-NKC-CNB-Validator-Utils/02-pod.t
+SHA256 0aa74229d25c94f86bb97b164fff2758851fb5019aa591cd9123f0af967207d0 xt/Plack-App-NKC-CNB-Validator/01-pod_coverage.t
+SHA256 d6f34671e3f4eaf28adc4f8bdc72859e96ad23858848fd83db1aeb855bd118ef xt/Plack-App-NKC-CNB-Validator/02-pod.t
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBAwAdFiEECAMiMrHl7JYa0rZPZ58rGyDXs5UFAmrUsmkACgkQZ58rGyDX
+s5WNoQv/TEczue2Y/y88n8W4pw/FgG/MqsIB80xPJ45G07O2b10lRiL1F1aofeAF
+jhuOasmqOiWAF/laHAKIlgjHlpZRWAA7tCVI1ZW2HgghjoSInp/CiYQ8FWz1I1zR
+cR//Rnx3Wv6kWDf8zYLlcAVeif5ia89F4tCvsGeLSDwXgfFLDBFhN6anI6snBXuE
+TAzjaOWaw3z45zgmP6IS89ffQrtUr2BZFJMKfOYnLeD1Ctx8Nco7YcUE716CfYO8
+Z5bKEBbE/TJqPRFYiNAMNf3NZgmhBO3fdeBYD6ILUc6rrYizYrEsH+Pn2KSNxXcT
+n3XM284lj0UPmBhQwwZ5eTbarBwX9gmQOF8NAnQuYN5jzDw6umtDRJRptxQqgYb6
+voMt/hlwGxAxfRrxLmQtf0S09PKTGfzbNay2/TSaqU/04mbWp9cPnjnvQ51GkV+B
+rBvBsh7RVOL2zrWYXuCmcj+1BtNCbkI3TB24YCu1oLznhu6cW1kwvig/TP2QKrw2
+23He4wzk
+=iOLF
+-----END PGP SIGNATURE-----
