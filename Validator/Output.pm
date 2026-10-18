@@ -5,6 +5,7 @@ use strict;
 use warnings;
 
 use Data::MARC::Validator::Report;
+use Data::NKC::MARC::Menu;
 use Data::Printer;
 use DateTime;
 use English;
@@ -23,6 +24,7 @@ use Tags::HTML::Container;
 use Tags::HTML::Footer 0.03;
 use Tags::HTML::MARC::Validator::Report;
 use Tags::HTML::Messages;
+use Tags::HTML::NKC::MARC::Menu;
 use Unicode::UTF8 qw(decode_utf8);
 use ZOOM;
 
@@ -34,6 +36,7 @@ sub _cleanup {
 	$self->{'_tags_container'}->cleanup;
 	$self->{'_tags_footer'}->cleanup;
 	$self->{'_tags_messages'}->cleanup;
+	$self->{'_tags_menu'}->cleanup;
 	$self->{'_tags_validator_report'}->cleanup;
 
 	return;
@@ -48,6 +51,7 @@ sub _css {
 		'error' => 'red',
 		'info' => 'green',
 	});
+	$self->{'_tags_menu'}->process_css;
 	$self->{'_tags_validator_report'}->process_css;
 
 	$self->{'css'}->put(
@@ -179,6 +183,9 @@ sub _prepare_app {
 	$self->{'_tags_messages'} = Tags::HTML::Messages->new(%p,
 		'flag_no_messages' => 0,
 	);
+	$self->{'_tags_menu'} = Tags::HTML::NKC::MARC::Menu->new(%p,
+		'mode_search' => 1,
+	);
 	$self->{'_tags_validator_report'} = Tags::HTML::MARC::Validator::Report->new(%p);
 
 	$self->{'_zoom_data'} = $self->zoom;
@@ -201,11 +208,21 @@ sub _process_actions {
 
 	$self->{'_title'} = $self->_lang('page_title');
 
+	$self->{'_search'} = undef;
 	$self->{'_searching'} = undef;
 	$self->{'_marc'} = undef;
 
 	$self->_process_form($env);
 	$self->_load_data($env);
+
+	my $menu = Data::NKC::MARC::Menu->new(
+		'cnb_id' => $self->{'_search_id'}->{'cnb'},
+		'logo_image_location' => '/img/logo.png',
+		'logo_location' => '/',
+		'search' => $self->{'_search'},
+		'searching' => $self->{'_searching'},
+	);
+	$self->{'_tags_menu'}->init($menu);
 
 	# Validate.
 	if (defined $self->{'_marc'}) {
@@ -280,6 +297,7 @@ sub _tags_middle {
 		}
 		$session->set('messages', []);
 	}
+	$self->{'_tags_menu'}->process;
 	$self->{'_tags_container'}->process(
 		sub {
 			$self->{'_tags_messages'}->process($messages_ar);
